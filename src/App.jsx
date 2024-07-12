@@ -5,14 +5,14 @@ import fb from './assets/fb.png'
 import play from './assets/ply.png'
 function App() {
     return (
-        <div className="flex justify-center bg-white py-10">
+        <div className="flex justify-center gap-5 bg-white py-10">
             {/* Bagian Gambar */}
-            <div className="hidden md:block md:w-1/2 lg:w-3/5">
-                <img src={phoneImage} height={420} width={420}  alt="Instagram" className="max-w-full h-auto" />
+            <div className="hidden md:block ">
+                <img src={phoneImage} height={440} width={420}  alt="Instagram" className="max-w-full h-auto" />
             </div>
 
             {/* Bagian Formulir Login */}
-            <div className="max-w-sm md:w-1/2 lg:w-2/5">
+            <div className="max-w-sm md:mt-5 ">
                 <div className="bg-white border border-gray-300 p-8 rounded-lg mb-6">
                     <div className='m-5'>
                         <i
