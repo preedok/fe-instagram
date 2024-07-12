@@ -1,22 +1,10 @@
-/** @type {import('tailwindcss').Config} */
-const withMT = require("@material-tailwind/react/utils/withMT");
-module.exports = withMT({
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  // server: {
-  //   port: 3001,
-  // },
+// tailwind.config.js
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {
-      keyframes: {
-        floating: {
-          '0%, 100%': { transform: 'translateY(-3deg)' },
-          '50%': { transform: 'translateY(3deg)' },
-        },
-      },
-      animation: {
-        floating: 'floating 3s infinite',
-      }
-    },
+    extend: {},
   },
   plugins: [],
-});
+}
