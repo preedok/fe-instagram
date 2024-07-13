@@ -25,8 +25,6 @@ function App() {
                 setIsLoading(true);
             })
     };
-
-
     return (
         <div className="flex justify-center gap-5 bg-white py-10">
             <div className="hidden md:block ">
